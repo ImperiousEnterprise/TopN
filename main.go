@@ -6,8 +6,6 @@ import (
 	"container/heap"
 	"os"
 	"bufio"
-	"io"
-	"bytes"
 )
 
 
@@ -58,26 +56,6 @@ func main() {
 
 		fmt.Printf("%d ", heap.Pop(v))
 
-	}
-}
-
-
-func lineCount(r io.Reader)(int, error){
-	b := make([]byte, 32*1024)
-	co := 1
-
-	lineSep := []byte{'\n'}
-
-	for{
-		c, err := r.Read(b)
-		co += bytes.Count(b[:c], lineSep)
-
-		switch {
-
-		case err == io.EOF: return co, nil
-		case err != nil: return co, err
-
-		}
 	}
 }
 
